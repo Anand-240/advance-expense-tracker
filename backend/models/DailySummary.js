@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const dailySummarySchema = new mongoose.Schema({
   shopId: { type: mongoose.Schema.Types.ObjectId, ref: "Shop", required: true },
   date: { type: String, required: true },
@@ -10,5 +9,4 @@ const dailySummarySchema = new mongoose.Schema({
   topPaymentMethod: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
-
 export default mongoose.model("DailySummary", dailySummarySchema);
