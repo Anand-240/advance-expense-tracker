@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import shopService from "../services/shopService";
+import { useAuth } from "../auth/AuthProvider";
+
 export default function MyShops() {
   const [shops, setShops] = useState([]);
   const navigate = useNavigate();
+  const { token } = useAuth();
+
   useEffect(() => {
     (async () => {
-      const token = localStorage.getItem("token");
       if (!token) return navigate("/auth/login");
       const res = await shopService.getMyShops(token);
-      setShops(res);
+      setShops(res || []);
     })();
-  }, []);
+  }, [token]);
+
   return (
     <div className="min-h-screen p-6">
       <div className="max-w-4xl mx-auto">

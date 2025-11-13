@@ -11,14 +11,16 @@ import MyShops from "./pages/MyShops.jsx";
 import CreateShop from "./pages/CreateShop.jsx";
 import CustomerPay from "./pages/CustomerPay.jsx";
 import Profile from "./pages/Profile.jsx";
+import MockWebhookPay from "./pages/MockWebhookPay.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/shops/demo" replace />} />
+      <Route path="/" element={<Navigate to="/myshops" replace />} />
       <Route path="/auth/login" element={<Login />} />
       <Route path="/auth/register" element={<Register />} />
+      <Route path="/mock-webhook" element={<MockWebhookPay />} />
       <Route path="/myshops" element={<ProtectedRoute><MyShops /></ProtectedRoute>} />
       <Route path="/shops/create" element={<ProtectedRoute><CreateShop /></ProtectedRoute>} />
       <Route path="/shops/:shopId" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
